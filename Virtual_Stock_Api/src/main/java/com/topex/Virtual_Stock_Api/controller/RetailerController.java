@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.topex.Virtual_Stock_Api.model.Supplier;
 import com.topex.Virtual_Stock_Api.service.SupplierService;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v4/order")
@@ -20,6 +21,11 @@ public class RetailerController {
 	@PostMapping("/add")
 	public ResponseEntity<Supplier> addSupplierHandler(@RequestBody Supplier supplier){
 		return new ResponseEntity<>(service.createSupplier(supplier),HttpStatus.ACCEPTED);
+	}
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<Supplier> findallProductHandler(){
+		return service.getAllOrder();
 	}
 
 }
