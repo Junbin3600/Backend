@@ -19,8 +19,13 @@ public  class SupplierService  {
 		
 		suplier.setOrderDate(LocalDate.now());
 		return repo.saveAndFlush(suplier);
-	}	
+	}
 	
+		public  List<Supplier>  getAllOrder(){
+		 List<Supplier> list=repo.findAll();
+		 if(list.isEmpty())throw new SupplierException("No Order Found");
+		return list;
+	}
 	
 
 }
